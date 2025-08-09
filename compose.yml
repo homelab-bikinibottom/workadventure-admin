@@ -13,7 +13,8 @@ services:
       - default
  
   admin_php:
-    build: ./containers/php
+    # build: ./containers/php
+    image: eacr.local.eamca.com/workadventure-admin
     restart: ${RESTART_POLICY}
     environment:
       ADMIN_API_TOKEN : "$ADMIN_API_TOKEN"
