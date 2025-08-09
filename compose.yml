@@ -1,6 +1,6 @@
 services:
   admin-db:
-    image: mongo:8
+    image: arm64v8/mongo:8
     restart: ${RESTART_POLICY}
     environment:
       MONGO_INITDB_ROOT_USERNAME: "$ADMIN_DB_ROOT"
@@ -13,7 +13,7 @@ services:
       - default
  
   admin_php:
-    build: ../php
+    build: ./containers/php
     restart: ${RESTART_POLICY}
     environment:
       ADMIN_API_TOKEN : "$ADMIN_API_TOKEN"
@@ -41,7 +41,7 @@ services:
       - default
 
   admin:
-    image: nginx:mainline
+    image: nginx:alpine
     restart: ${RESTART_POLICY}
     environment:
       DOMAIN: "$DOMAIN"
