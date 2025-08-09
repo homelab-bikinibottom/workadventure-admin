@@ -28,7 +28,7 @@ services:
       - ./vendor:/var/www/vendor:ro
     depends_on:
       - admin-db
-      - sidecar
+      # - sidecar
     networks:
       - default
 
