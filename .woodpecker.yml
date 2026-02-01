@@ -1,0 +1,21 @@
+when:
+  event: manual
+
+variables:
+  - &platform linux/amd64
+
+steps:
+  - name: build
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      platforms: *platform
+      dockerfile: containers/php/Dockerfile
+      repo: eacr.local.eamca.com/workadventure-admin
+      cache_to: type=registry,ref=eacr.local.eamca.com/workadventure-admin:cache,mode=max
+      cache_from:
+        - type=registry\\,ref=eacr.local.eamca.com/workadventure-admin:cache
+      registry: https://eacr.local.eamca.com
+      mirror: https://eacr-mirror.local.eamca.com
+      custom_dns:
+        - 192.168.50.2
+        - 192.168.50.3
