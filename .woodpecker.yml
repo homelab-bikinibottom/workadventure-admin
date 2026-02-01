@@ -4,6 +4,9 @@ when:
 variables:
   - &platform linux/arm64
 
+labels:
+  platform: *platform
+
 steps:
   - name: build
     image: woodpeckerci/plugin-docker-buildx
